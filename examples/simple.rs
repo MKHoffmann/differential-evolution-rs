@@ -8,21 +8,23 @@
 
 extern crate differential_evolution;
 
-use differential_evolution::self_adaptive_de;
+use differential_evolution::{shade, DifferentialEvolution};
 
 fn main() {
     // create a self adaptive DE with an inital search area
     // from -10 to 10 in 5 dimensions.
-    let mut de = self_adaptive_de(vec![(-10.0, 10.0); 5], |pos| {
+    let mut de = shade(vec![(-10.0, 10.0); 5], |pos| {
         // cost function to minimize: sum of squares
         pos.iter().fold(0.0, |sum, x| sum + x*x)
     });
 
-    // perform 10000 cost evaluations
-    de.iter().nth(10000);
+    // perform optimization. 
+    // Previously: 10000 evaluations. Pop size is 100. So 100 generations.
+    let epochs = de.solve(100, 100);
     
     // show the result
     let (cost, pos) = de.best().unwrap();
+    println!("epochs: {}", epochs);
     println!("cost: {}", cost);
     println!("pos: {:?}", pos);
 }
