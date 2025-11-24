@@ -1,5 +1,6 @@
 [package]
 version = "0.2.2"
+edition = "2021"
 documentation = "https://docs.rs/differential-evolution/0.2.2/differential_evolution/"
 
 name = "differential-evolution"
@@ -15,4 +16,8 @@ Simple and powerful global optimization using a self-adapting differential evolu
 keywords = ["evolution", "optimization", "genetic", "DE"]
 
 [dependencies]
-rand = "0.3"
+rand = "0.9.2"
+rand_distr = "0.5.1"
+rayon = "1.11.0"
+ringbuf = "0.4.8"
+ringbuffer = "0.16.0"
