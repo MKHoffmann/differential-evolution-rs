@@ -288,7 +288,7 @@ where
             }
         }
     }
-    
+
     fn on_generation_end(&mut self) {
         // Maps to update_memory in lib.rs
         self.attach_new_cr();
