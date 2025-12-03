@@ -112,6 +112,8 @@ where
             }
         }
         
+        shade.pop = shade.trial.clone();
+        
         shade
     }
     
